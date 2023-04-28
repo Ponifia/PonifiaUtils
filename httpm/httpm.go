@@ -15,7 +15,7 @@ func Recover(next http.Handler) http.Handler {
 		defer func() {
 			rec := recover()
 			if rec != nil {
-				Logger.Print("panic: %v", rec)
+				Logger.Print("panic: %s", rec.(error).Error())
 				w.WriteHeader(http.StatusInternalServerError)
 			}
 		}()
