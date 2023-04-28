@@ -1,10 +1,11 @@
 package httpm
 
 import (
-	"PonifiaUtils/logging"
 	"math/rand"
 	"net/http"
 	"time"
+
+	"github.com/Ponifia/PonifiaUtils/logging"
 )
 
 var Logger = logging.GetLogger("httpm")
