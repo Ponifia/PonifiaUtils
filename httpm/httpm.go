@@ -3,6 +3,7 @@ package httpm
 import (
 	"math/rand"
 	"net/http"
+	"runtime/debug"
 	"time"
 
 	"github.com/Ponifia/PonifiaUtils/logging"
@@ -16,6 +17,7 @@ func Recover(next http.Handler) http.Handler {
 			rec := recover()
 			if rec != nil {
 				Logger.Print("panic: %s", rec.(error).Error())
+				debug.PrintStack()
 				w.WriteHeader(http.StatusInternalServerError)
 			}
 		}()
